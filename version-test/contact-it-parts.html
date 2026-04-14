@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — IT-Parts</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f4f6f8;
+      color: #1a1a1a;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #0f6e56 0%, #1d9e75 50%, #0c447c 100%);
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.85);
+      position: relative;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 0 2rem 3rem;
+      max-width: 1100px;
+      margin: -3rem auto 0;
+      position: relative;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e8eaed;
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
+    }
+
+    /* Barre colorée en haut au survol */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1d9e75, #0c447c);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+    }
+
+    /* ── ICÔNE ── */
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #e1f5ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      transition: background 0.25s;
+    }
+
+    .card:hover .card-icon {
+      background: #1d9e75;
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #0f6e56;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s;
+    }
+
+    .card:hover .card-icon svg {
+      stroke: #ffffff;
+    }
+
+    /* ── TEXTES ── */
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-main {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f6e56;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    /* ── BADGE ── */
+    .card-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 1px solid #1d9e75;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: #0f6e56;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .card:hover .card-badge {
+      background: #1d9e75;
+      color: #ffffff;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3rem 1rem 5rem;
+      }
+
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+        padding: 0 1rem 2rem;
+        gap: 1rem;
+        margin-top: -2.5rem;
+      }
+
+      .card {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 0 1rem 2rem;
+      }
+
+      .card-main {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section aria-label="Section contact IT-Parts">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="hero-title">Contactez-nous</h1>
+    <p class="hero-subtitle">Nous sommes là pour vous — en personne, par téléphone ou par e-mail</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-wrapper">
+
+    <!-- Téléphone -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16v.9z"/>
+        </svg>
+      </div>
+      <p class="card-label">Ligne client</p>
+      <p class="card-main">+420 534 009 009</p>
+      <p class="card-desc">Lun–Ven 9h00–16h00</p>
+      <span class="card-badge">Appeler en semaine</span>
+    </div>
+
+    <!-- E-mail -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="22,4 12,13 2,4"/>
+        </svg>
+      </div>
+      <p class="card-label">E-mail</p>
+      <p class="card-main">info@it-parts.cz</p>
+      <p class="card-desc">Réponse généralement sous 24h</p>
+      <span class="card-badge">Non-stop</span>
+    </div>
+
+    <!-- Adresse -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <p class="card-label">Adresse du magasin</p>
+      <p class="card-main">Vlkova 1a, 628 00 Brno</p>
+      <p class="card-desc">Brno-Líšeň · GPS: 49.2032, 16.6676</p>
+      <span class="card-badge">Parking gratuit à l'entrée</span>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

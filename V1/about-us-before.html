@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page - About us</title>
+
+    <style>
+      :root {
+        --text: #222222;
+        --muted: #5f5f5f;
+        --black: #1a1a1a;
+        --green-dim: #e6f5ea;
+        --green: #23a455;
+        --green-soft: #f2f6f4;
+        --green-border: #c7d7cd;
+        --red: #5f7e75;
+        --bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
+
+      body {
+        background: #dcc4c4;
+        color: var(--text);
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      /* GLOBAL FIX */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Sections */
+      .section {
+        min-height: 80vh; /* FIX mobile */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 90px 24px;
+      }
+
+      .section h2 {
+        font-size: clamp(30px, 4vw, 48px);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        max-width: 860px;
+        line-height: 1.6;
+        font-size: 18px;
+      }
+
+      .section p + p {
+        margin-top: 14px;
+      }
+
+      /* Couleurs */
+      .red {
+        background-color: var(--red);
+        color: white;
+      }
+
+      .light {
+        background-color: var(--bg);
+        color: var(--text);
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        background-color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 24px;
+        position: relative;
+      }
+
+      .hero-inner {
+        width: min(1200px, 100%);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .hero-intro-section {
+        min-height: 56vh;
+        text-align: center;
+        padding-top: 110px;
+        padding-bottom: 90px;
+      }
+
+      .hero-intro {
+        width: min(920px, 100%);
+      }
+
+      .hero-intro h1 {
+        font-size: clamp(40px, 8vw, 86px);
+        line-height: 1.02;
+        margin-bottom: 14px;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-intro p {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: clamp(18px, 2.2vw, 30px);
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.93);
+      }
+
+      .hero-copy h2 {
+        font-size: clamp(32px, 4vw, 54px);
+        line-height: 1.08;
+        margin-bottom: 20px;
+        color: var(--black);
+      }
+
+      .hero-copy p {
+        max-width: 620px;
+        font-size: clamp(17px, 2vw, 27px);
+        line-height: 1.45;
+        color: #3f3f3f;
+      }
+
+      .hero-copy a {
+        color: var(--black);
+      }
+
+      .hero-copy p + p {
+        margin-top: 18px;
+      }
+
+      .hero-media {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .hero-photo {
+        width: min(100%, 460px);
+        max-height: 72vh;
+        object-fit: contain;
+        filter: grayscale(100%);
+      }
+
+      /* Chevron */
+      /* .scroll-down {
+        position: absolute;
+        bottom: 20px;
+        cursor: pointer;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        user-select: none;
+      } */
+
+      /* .scroll-down-text {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #4c4c4c;
+      } */
+
+      /* .scroll-down-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid #cdd7d1;
+        background: #ffffff;
+        display: grid;
+        place-items: center;
+        font-size: 26px;
+        color: #0c7a46;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        animation: floatDown 1.8s ease-in-out infinite;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .scroll-down:hover .scroll-down-icon {
+        transform: translateY(2px) scale(1.04);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+      } */
+
+      /* HERO FIX */
+      @media (max-width: 900px) {
+        .hero {
+          min-height: auto;
+          padding: 40px 16px 80px;
+        }
+
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .hero-media {
+          order: -1;
+        }
+
+        .hero-photo {
+          max-height: 300px;
+        }
+
+        .hero-intro-section {
+          min-height: auto;
+          padding-top: 84px;
+          padding-bottom: 64px;
+        }
+
+        .hero-copy h2 {
+          font-size: clamp(28px, 7vw, 40px);
+          margin-bottom: 14px;
+        }
+
+        .hero-intro h1 {
+          font-size: clamp(34px, 11vw, 56px);
+          margin-bottom: 10px;
+        }
+
+        .hero-intro p {
+          font-size: 17px;
+        }
+      }
+
+      /* Cards */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+        width: min(1100px, 100%);
+      }
+
+      .card {
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        padding: 22px;
+        text-align: left;
+        backdrop-filter: blur(2px);
+      }
+
+      .card h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .card p {
+        font-size: 16px;
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      /* Card responsive */
+      @media (max-width: 900px) {
+        .cards {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+
+      /* ── TIMELINE ── */
+      .timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-width: 900px;
+        margin: 50px auto 0;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 140px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--black) 10%,
+          var(--black) 90%,
+          transparent
+        );
+      }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 0 48px;
+        padding: 36px 0;
+        position: relative;
+        border-bottom: 1px solid rgba(26, 26, 26, 0.07);
+      }
+      .timeline-item:last-child {
+        border-bottom: none;
+      }
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: 132px;
+        top: 38px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid var(--black);
+        z-index: 1;
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
+      }
+      .timeline-item:hover::after {
+        background: var(--black);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .timeline-date {
+        text-align: right;
+        padding-right: 24px;
+        padding-top: 2px;
+      }
+      .date-year {
+        display: block;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--black);
+        line-height: 1;
+      }
+      .date-day {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .timeline-content h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .timeline-content p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 8px;
+      }
+      .timeline-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Élément "Dnes" */
+      .timeline-item--now {
+        background: var(--green-dim);
+        border-radius: 12px;
+        padding: 28px 16px;
+        margin-left: -16px;
+        border-bottom: none;
+      }
+      .timeline-item--now::after {
+        background: var(--black);
+        box-shadow: 0 0 0 4px rgba(35, 164, 85, 0.2);
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 620px) {
+        .timeline {
+          padding-left: 20px;
+        }
+        .timeline::before {
+          left: 8px;
+          width: 2px;
+          background: var(--green);
+        }
+        .timeline-item {
+          display: block;
+          padding: 0 0 28px 32px;
+          border-bottom: none;
+        }
+        .timeline-item::after {
+          left: 0;
+          top: 4px;
+          width: 14px;
+          height: 14px;
+          border: 2px solid var(--green);
+          background: white;
+          box-shadow: none;
+        }
+        .timeline-item:hover::after {
+          background: var(--green);
+        }
+        .timeline-date {
+          text-align: left;
+          padding-right: 0;
+          margin-bottom: 8px;
+        }
+        .date-year {
+          display: inline;
+          font-size: 20px;
+          color: var(--green);
+        }
+        .date-day {
+          display: inline;
+          margin-left: 8px;
+          font-size: 13px;
+        }
+        .timeline-content {
+          background: var(--green-soft);
+          border: 1px solid var(--green-border);
+          border-radius: 14px;
+          padding: 14px 16px;
+        }
+        .timeline-content h3 {
+          font-size: 17px;
+        }
+        .timeline-content p {
+          font-size: 14px;
+        }
+
+        .timeline-item--now {
+          margin-left: 32px;
+          padding: 0;
+          background: transparent;
+          border-radius: 0;
+        }
+        .timeline-item--now .timeline-content {
+          background: var(--green-dim);
+          border-color: #c2dbc8;
+        }
+        .timeline-item--now::after {
+          left: 0;
+          background: var(--green);
+          box-shadow: none;
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── POURQUOI ── */
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 30px;
+        width: min(1100px, 100%);
+      }
+
+      .why-card {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        padding: 22px;
+        text-align: left;
+        backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .why-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1);
+      }
+
+      .why-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .why-card h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: white;
+      }
+
+      .why-card p {
+        font-size: 16px;
+        line-height: 1.55;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Pourquoi responsive */
+      @media (max-width: 900px) {
+        .why-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+
+      /*  ── RÉFÉRENCE & ESHOP ── */
+      /* GRID */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin-top: 40px;
+      }
+
+      /* BLOCK */
+      .info-block {
+        background: #f5f7f6;
+        border: 1px solid #d6e2da;
+        border-radius: 16px;
+        padding: 24px;
+        text-align: left;
+      }
+
+      /* TAG */
+      .section-tag {
+        display: inline-block;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #23a455;
+        margin-bottom: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* QUOTE */
+      .quote {
+        font-style: italic;
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #444;
+        border-left: 3px solid #23a455;
+        padding-left: 12px;
+      }
+
+      /* LIST */
+      .clean {
+        list-style: none;
+        margin-top: 16px;
+      }
+
+      .clean li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 18px;
+      }
+
+      .clean li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #23a455;
+        font-weight: bold;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 800px) {
+        .info-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+
+      /* ACTION */
+      .action-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
+      .action-box {
+        width: min(980px, 100%);
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 18px;
+        padding: 34px;
+        text-align: left;
+        backdrop-filter: blur(3px);
+      }
+
+      .action-box h2 {
+        text-align: left;
+        margin-bottom: 16px;
+      }
+
+      .action-box p {
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.96);
+      }
+
+      .action-box .clean {
+        margin: 16px 0;
+      }
+
+      .action-box .clean li {
+        color: rgba(255, 255, 255, 0.96);
+      }
+
+      .action-box .clean li::before {
+        color: #ffffff;
+      }
+
+      @media (max-width: 760px) {
+        .action-section {
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
+
+        .action-box {
+          padding: 22px 18px;
+          border-radius: 14px;
+        }
+
+        .action-box h2 {
+          font-size: clamp(28px, 8vw, 38px);
+          margin-bottom: 12px;
+        }
+
+        .action-box p {
+          font-size: 16px;
+        }
+      }
+
+      /* B2B */
+      .b2b-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
+      .b2b-wrap {
+        width: min(1050px, 100%);
+        text-align: left;
+      }
+
+      .b2b-wrap h2 {
+        text-align: left;
+        margin-bottom: 14px;
+      }
+
+      .b2b-lead {
+        font-size: 18px;
+        max-width: 840px;
+        color: #2f2f2f;
+      }
+
+      .b2b-grid {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 20px;
+      }
+
+      .b2b-card {
+        background: #f4f8f5;
+        border: 1px solid #d5e5da;
+        border-radius: 14px;
+        padding: 20px;
+      }
+
+      .b2b-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .b2b-card p {
+        font-size: 16px;
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      /* CTA */
+      .cta-section {
+        padding-top: 110px;
+        padding-bottom: 110px;
+      }
+
+      .cta-box {
+        width: min(980px, 100%);
+        text-align: center;
+        padding: 42px 34px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.08)
+        );
+        box-shadow: 0 25px 55px rgba(114, 17, 42, 0.35);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(255, 255, 255, 0.2),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .cta-box h2 {
+        margin-bottom: 14px;
+        position: relative;
+      }
+
+      .cta-box p {
+        max-width: 760px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.95);
+        position: relative;
+      }
+
+      .cta-box p + p {
+        margin-top: 10px;
+      }
+
+      .cta-actions {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 13px 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      .btn-primary {
+        background: #ffffff;
+        color: #8f1534;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+      }
+
+      /* Scroll preview */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(0, 0, 0, 0.08);
+        z-index: 9999;
+      }
+
+      .scroll-progress > span {
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #23a455, #0e6e3e);
+        transition: width 0.08s linear;
+      }
+
+      @media (max-width: 900px) {
+        .b2b-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .b2b-wrap h2,
+        .b2b-wrap,
+        .b2b-lead {
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .b2b-section,
+        .cta-section {
+          padding-top: 72px;
+          padding-bottom: 72px;
+        }
+
+        .b2b-card {
+          padding: 16px;
+        }
+
+        .b2b-card h3 {
+          font-size: 18px;
+        }
+
+        .cta-box h2 {
+          font-size: clamp(28px, 8vw, 40px);
+        }
+
+        .cta-box p {
+          font-size: 16px;
+        }
+
+        .cta-box {
+          padding: 28px 18px;
+          border-radius: 16px;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 320px;
+        }
+      }
+
+      @keyframes floatDown {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(4px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true">
+      <span id="scrollProgressBar"></span>
+    </div>
+
+    <section class="section red hero-intro-section">
+      <div class="hero-intro">
+        <h1>Dáváme technice druhou šanci</h1>
+        <p>
+          Jsme IT-parts. Udržitelně, chytře a po celé Evropě pomáháme prodloužit
+          život notebooků, počítačů a jejich komponent.
+        </p>
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h2>Kdo jsme a proč jsme vznikli</h2>
+          <p>
+            Jsme mladá a rychle rostoucí firma, která vznikla z každodenní praxe
+            a zkušeností společnosti
+            <a href="http://www.pocitace24.cz" target="_blank"
+              ><strong>počítače24.cz</strong></a
+            >, specialisty na repasovanou výpočetní techniku.
+          </p>
+          <p>
+            Denně pracujeme s notebooky a počítači a vidíme, kolik plně
+            funkčních komponent by jinak zbytečně skončilo jako elektroodpad.
+          </p>
+          <p>
+            Právě proto jsme se rozhodli jít jinou cestou –
+            <strong>cestou oprav, opětovného využití a udržitelnosti</strong>.
+          </p>
+        </div>
+        <div class="hero-media">
+          <img
+            class="hero-photo"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 560'%3E%3Crect width='420' height='560' fill='%23d9d9d9'/%3E%3Ccircle cx='210' cy='180' r='85' fill='%23b3b3b3'/%3E%3Crect x='95' y='270' width='230' height='220' rx='115' fill='%23b3b3b3'/%3E%3Ctext x='50%25' y='535' text-anchor='middle' font-size='28' font-family='Arial,sans-serif' fill='%23616161'%3EYour photo%3C/text%3E%3C/svg%3E"
+            alt="Portrait"
+          />
+        </div>
+      </div>
+
+      <!-- Chevron -->
+      <!-- <div class="scroll-down" onclick="scrollToNext()">
+        <span class="scroll-down-icon">&#8964;</span>
+      </div> -->
+    </section>
+
+    <!-- Naše hodnoty -->
+    <section class="section red">
+      <h2 class="section-title">Věříme, že oprava má smysl</h2>
+      <p>
+        Starší notebooky a počítače si často zaslouží jen správný náhradní díl,
+        ne vyhození. Proto nabízíme
+        <strong>kvalitní, ověřené a plně funkční náhradní díly</strong>, které
+        šetří finance i životní prostředí 🌱
+      </p>
+      <p>
+        Naše řešení je ideální jak pro <strong>koncové uživatele</strong>, tak
+        pro <strong>servisy, techniky a firmy</strong>, které se zabývají
+        opravami, správou IT nebo repasí techniky.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Kvalita</h3>
+          <p>Ověřené a funkční díly s důrazem na spolehlivost.</p>
+        </article>
+        <article class="card">
+          <h3>Podpora</h3>
+          <p>Pomůžeme koncovým uživatelům, servisům i firemním IT týmům.</p>
+        </article>
+        <article class="card">
+          <h3>Udržitelnost</h3>
+          <p>Prodlužujeme život zařízení a snižujeme množství elektroodpadu.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section light">
+      <h2>Jak jsme se sem dostali</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="date-year">2012</span>
+            <span class="date-day">10. července</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Vznik počítače24.cz</h3>
+            <p>
+              Začínáme s repasovanou výpočetní technikou. Získáváme know-how,
+              servisní zkušenosti a hluboké porozumění notebookům a počítačům v
+              reálném provozu.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="date-year">2022</span>
+            <span class="date-day">26. prosince</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Spuštění IT-parts.eu</h3>
+            <p>
+              Vzniká samostatný projekt zaměřený na prodej náhradních dílů.
+              Současně aktivně prodáváme na online marketplaces (Aukro, Allegro,
+              eBay), kde si budujeme silnou reputaci a stovky pozitivních
+              hodnocení.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="date-year">2025</span>
+            <span class="date-day">1. ledna</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Spuštění IT-parts.cz</h3>
+            <p>
+              Po zkušenostech s bezpečnostními incidenty a napadením původního
+              e-shopu jsme se rozhodli pro nový začátek.
+            </p>
+            <p>
+              IT-parts.cz je
+              <strong>moderní, plně zabezpečený e-shop</strong>, postavený s
+              důrazem na stabilitu, bezpečnost a dlouhodobou důvěru zákazníků.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-item--now">
+          <div class="timeline-date">
+            <span class="date-year" style="font-size: 18px">Dnes</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Jedničkou v Evropě</h3>
+            <p>
+              Naším cílem je stát se
+              <strong
+                >jedničkou v oblasti náhradních dílů pro IT techniku v
+                Evropě</strong
+              >
+              – s důrazem na udržitelnost, férovost a profesionální přístup.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proč nakupovat právě u nás? -->
+    <section class="section red" style="padding: 64px 24px">
+      <h2>Proč nakupovat právě u nás?</h2>
+      <p
+        style="
+          color: rgba(255, 255, 255, 0.82);
+          font-size: 17px;
+          margin-bottom: 44px;
+          max-width: 560px;
+          line-height: 1.5;
+        "
+      >
+        Díly od lidí, kteří technice opravdu rozumí – rychle, ekologicky a s
+        podporou pro každého.
+      </p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9" />
+              <path d="M17 3l4 4-4 4" />
+              <path d="M21 7H13" />
+            </svg>
+          </div>
+          <h3>Druhý život techniky</h3>
+          <p>
+            Věříme, že opravit je lepší než vyhodit. Prodlužujeme životnost
+            zařízení a snižujeme elektroodpad.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <h3>Rychlá expedice</h3>
+          <p>
+            Velké skladové zásoby a okamžitá expedice – díl máte doma co
+            nejdříve.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+          </div>
+          <h3>Odborná podpora</h3>
+          <p>
+            Radíme vám lidé, kteří každý den pracují s notebooky a počítači.
+            Žádné call centrum.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+              />
+            </svg>
+          </div>
+          <h3>Ověřená kvalita</h3>
+          <p>
+            Každý díl prochází kontrolou. Stovky pozitivních hodnocení na Aukro,
+            Allegro a eBay.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3>Ekologické řešení</h3>
+          <p>
+            Oprava místo nákupu nového = méně odpadu a nižší náklady. Dobré pro
+            vás i planetu.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 7V5a2 2 0 0 0-4 0v2" />
+              <line x1="12" y1="12" x2="12" y2="16" />
+              <line x1="10" y1="14" x2="14" y2="14" />
+            </svg>
+          </div>
+          <h3>Program B2B</h3>
+          <p>
+            Speciální podmínky pro firmy, servisy a IT techniky. Kontaktujte nás
+            pro individuální nabídku.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Référence & důvěra zákazníků + Jednoduše, přehledně a dostupně -->
+    <section class="section light">
+      <div class="info-grid">
+        <!-- LEFT : REFERENCES -->
+        <div class="info-block">
+          <h2>Reference & Důvěra zákazníků</h2>
+
+          <p class="quote">
+            "Nezačínali jsme na e-shopu. Začínali jsme u zákazníků."
+          </p>
+
+          <p>
+            Ještě před spuštěním vlastního e-shopu jsme dlouhodobě prodávali na
+            zavedených online marketplaces. Právě zde si nás zákazníci ověřili –
+            <strong>reálnými nákupy a reálnými recenzemi</strong>.
+          </p>
+
+          <ul class="clean">
+            <li>Odkazy na naše prodejní účty</li>
+            <li>Aktuální hodnocení</li>
+            <li>Dlouhodobou <strong>5★ zpětnou vazbu zákazníků</strong></li>
+          </ul>
+        </div>
+
+        <!-- RIGHT : ESHOP -->
+        <div class="info-block">
+          <h2>Jednoduše, přehledně a dostupně</h2>
+
+          <p>
+            Celý e-shop stavíme na jednoduchosti a přehlednosti,
+            <strong>v češtině i angličtině</strong>, aby mohl pomáhat zákazníkům
+            napříč Evropou.
+          </p>
+
+          <ul class="clean">
+            <li>
+              Vyhledávání podle <strong>Part Number (PN)</strong> pro maximální
+              kompatibilitu
+            </li>
+            <li>Odesíláme <strong>po celé EU</strong> i mimo ni po domluvě</li>
+            <li>Jsme <strong>plátci DPH</strong> a dbáme na férový přístup</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION -->
+    <section class="section red action-section">
+      <div class="action-box">
+        <h2>Vlastní servisní zázemí v Praze</h2>
+        <p>
+          Nejsme jen „sklad dílů“. V Praze máme
+          <strong>vlastní servisní zázemí</strong>, kde s technikou denně
+          pracujeme. Díky tomu:
+        </p>
+        <ul class="clean">
+          <li>přesně víme, co prodáváme</li>
+          <li>dokážeme odborně poradit i pomoci s opravou</li>
+        </ul>
+        <p>
+          Pokud řešíte konkrétní problém, servis nebo větší zakázku,
+          <strong>jsme připraveni pomoci</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- B2B -->
+    <section class="section light b2b-section">
+      <div class="b2b-wrap">
+        <h2>Spolupráce B2B</h2>
+        <p class="b2b-lead">
+          Spolupracujeme se servisy, IT firmami, školami i veřejnými
+          institucemi. Umíme dodat jednotlivé díly i větší objemy s individuální
+          podporou.
+        </p>
+
+        <div class="b2b-grid">
+          <article class="b2b-card">
+            <h3>Pro servisy a techniky</h3>
+            <p>
+              Rychlá dostupnost ověřených dílů, odborná konzultace kompatibility
+              a možnost dlouhodobé spolupráce.
+            </p>
+          </article>
+          <article class="b2b-card">
+            <h3>Pro firmy a instituce</h3>
+            <p>
+              Individuální cenové podmínky, fakturace s DPH, stabilní dodávky a
+              pomoc při plánování větších zakázek.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section red cta-section">
+      <div class="cta-box">
+        <h2>Jsme tu pro vás</h2>
+        <p>
+          Potřebujete poradit s výběrem dílu, kompatibilitou nebo řešíte větší
+          poptávku? Ozvěte se nám a společně najdeme nejlepší řešení.
+        </p>
+        <p>
+          Ať už opravujete jeden notebook doma, nebo spravujete desítky zařízení
+          ve firmě, <strong>jsme tu pro vás</strong>.
+        </p>
+        <p>
+          Děkujeme, že s námi pomáháte měnit přístup k technice a dáváte jí
+          druhou šanci.
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="mailto:info@it-parts.cz"
+            >Napsat e-mail</a
+          >
+          <a class="btn btn-secondary" href="tel:+420000000000">Zavolat nám</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- <script>
+      function scrollToNext() {
+        const nextSection = document.querySelector(".hero").nextElementSibling;
+        nextSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function updateScrollProgress() {
+        const bar = document.getElementById("scrollProgressBar");
+        if (!bar) return;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress =
+          scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+
+      window.addEventListener("scroll", updateScrollProgress, {
+        passive: true,
+      });
+      window.addEventListener("resize", updateScrollProgress);
+      updateScrollProgress();
+    </script> -->
+  </body>
+</html>

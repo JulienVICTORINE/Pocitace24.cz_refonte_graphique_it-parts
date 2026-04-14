@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page - Shipping & Payment</title>
+    <style>
+      :root {
+        --text: #222222;
+        --muted: #5f5f5f;
+        --black: #1a1a1a;
+        --ok: #1f9f5f;
+        --bg: #ffffff;
+      }
+      body {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .itp-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 24px;
+        background-color: var(--bg);
+        color: var(--text);
+      }
+      .itp-section h2 {
+        font-size: clamp(28px, 4vw, 44px);
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--black);
+      }
+      .itp-intro {
+        width: min(1400px, 100%);
+        max-width: 1400px;
+        line-height: 1.75;
+        font-size: 18px;
+        color: var(--text);
+        margin: 0 auto;
+        padding: 24px 40px 0;
+      }
+      .itp-section-lead {
+        font-size: 17px;
+        max-width: 860px;
+        color: var(--muted);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* CARRIERS */
+      .itp-ref-showcase {
+        width: min(1120px, 100%);
+      }
+      .itp-ref-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        gap: 16px;
+      }
+      .itp-ref-card {
+        background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+        border: 1px solid #dbe4ff;
+        border-radius: 16px;
+        padding: 18px 14px 16px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .itp-ref-card-logo {
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .itp-ref-card-logo img {
+        max-width: 132px;
+        max-height: 50px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+      .itp-ref-card p {
+        margin: 0;
+        color: #5a6574;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      /* DELIVERY HEAD */
+      .itp-delivery-wrap {
+        width: min(1200px, 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .itp-delivery-head {
+        text-align: center;
+        margin-bottom: 28px;
+        max-width: 760px;
+      }
+      .itp-delivery-head p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      /* TABLE */
+      .itp-table-wrap {
+        background: #ffffff;
+        border: 1px solid #d5e5da;
+        border-radius: 18px;
+        overflow: hidden;
+        width: min(680px, 100%);
+        box-shadow:
+          0 4px 24px rgba(31, 159, 95, 0.07),
+          0 1px 4px rgba(0, 0, 0, 0.04);
+      }
+      .itp-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+      .itp-table thead {
+        background: #d1214c;
+      }
+      .itp-table thead th {
+        padding: 13px 16px;
+        text-align: left;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.85);
+        border: none;
+      }
+      .itp-table thead th:last-child {
+        text-align: right;
+      }
+      .itp-table tbody tr {
+        border-bottom: 1px solid #eef4f1;
+      }
+      .itp-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .itp-table tbody tr:nth-child(even) {
+        background: #f5f5f6;
+      }
+      .itp-table tbody tr:hover {
+        background: #edf7f1;
+      }
+      .itp-table td {
+        padding: 10px 16px;
+        border: none;
+        text-align: left;
+        color: var(--text);
+        font-size: 14px;
+      }
+      .itp-table td:first-child {
+        text-align: center;
+        width: 46px;
+        padding: 10px 8px;
+      }
+      .itp-table td:last-child {
+        text-align: right;
+      }
+      .itp-flag-img {
+        display: block;
+        border-radius: 3px;
+        width: 26px;
+        height: 19px;
+        margin: 0 auto;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      }
+      .itp-country-name {
+        font-weight: 500;
+        color: var(--text);
+      }
+      .itp-price-chip {
+        display: inline-block;
+        background: #edf7f1;
+        color: #0f6e56;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        border: 1px solid #c0e8d5;
+        white-space: nowrap;
+      }
+
+      /* NOTICE */
+      .itp-notice {
+        background: #ececed;
+        border: 1px solid #d5d6d9;
+        border-radius: 12px;
+        padding: 16px 22px;
+        color: #1f2937;
+        font-size: 17px;
+        font-weight: 700;
+        width: min(680px, 100%);
+        margin-top: 16px;
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      /* PAYMENT TABLE */
+      .itp-payment-wrap {
+        max-width: 860px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .itp-payment-wrap .itp-table thead th:first-child {
+        width: 130px;
+      }
+      .itp-payment-wrap .itp-table td:first-child {
+        width: 130px;
+        text-align: center;
+      }
+      .itp-payment-wrap .itp-table td:nth-child(2) {
+        font-weight: 600;
+      }
+      .itp-dpp-logo {
+        display: inline-block;
+        width: auto;
+        height: 18px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      .itp-dpp-logo--apple {
+        height: 24px;
+      }
+      .itp-dpp-logo--gpay {
+        height: 19px;
+      }
+      .itp-dpp-logo--bank {
+        height: 20px;
+      }
+      .itp-dpp-logo-group {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .itp-logo-single {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* COMGATE BANNER */
+      .itp-comgate {
+        max-width: 860px;
+        width: 100%;
+        margin-top: 20px;
+        background: linear-gradient(135deg, #f0faf5 0%, #e6f4ec 100%);
+        border: 1px solid #b8dfc9;
+        border-radius: 16px;
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .itp-comgate__icon {
+        font-size: 38px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .itp-comgate__body {
+        flex: 1;
+      }
+      .itp-comgate__label {
+        font-size: 11px;
+        font-weight: 700;
+        color: #0f6e56;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+      .itp-comgate__text {
+        font-size: 15px;
+        color: #1e3a2f;
+        line-height: 1.55;
+        margin: 0;
+      }
+      .itp-comgate__text strong {
+        color: #0b5c47;
+        font-weight: 700;
+      }
+      .itp-comgate__badge {
+        display: inline-block;
+        background: #0f6e56;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        padding: 7px 16px;
+        border-radius: 999px;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 900px) {
+        .itp-ref-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .itp-comgate {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .itp-comgate__badge {
+          align-self: flex-start;
+        }
+      }
+      @media (max-width: 560px) {
+        .itp-ref-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+        .itp-section {
+          padding: 40px 16px;
+        }
+        .itp-intro {
+          padding: 20px 16px 0;
+          line-height: 1.65;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- INTRO -->
+    <p
+      class="itp-intro"
+      style="line-height: 1.3; text-align: justify; text-justify: inter-word"
+    >
+      <span style="font-size: 12pt">
+        Every week, we deliver shipments to many European countries to make our
+        products accessible to the widest possible range of customers. We offer
+        reliable tracking and optimized delivery times for both individuals and
+        business customers. Each order is carefully prepared and dispatched as
+        quickly as possible. Delivery outside the EU is available upon prior
+        arrangement. At IT-parts.cz, we collaborate with partners focused on
+        remanufacturing and responsible logistics. Thanks to this, we provide
+        solutions that are both cost-effective and environmentally friendly 🌱
+      </span>
+    </p>
+
+    <p
+      class="itp-intro"
+      style="line-height: 1.3; text-align: justify; text-justify: inter-word"
+    >
+      <span style="font-size: 12pt">
+        We deliver reliably across the entire European Union. Every order is
+        carefully packaged, trackable in real time, and shipped with a focus on
+        both speed and security. Thanks to trusted carriers and secure payment
+        methods, your purchase is simple, transparent, and worry-free 🌱
+      </span>
+    </p>
+
+    <!-- DELIVERY ACROSS EUROPE -->
+    <div class="itp-section" style="padding-top: 40px">
+      <div class="itp-delivery-wrap">
+        <!-- CARRIERS -->
+        <h2>Our Carriers</h2>
+        <p class="itp-section-lead">
+          We cooperate with trusted carriers across Europe to ensure fast,
+          secure, and flexible delivery.
+        </p>
+
+        <div class="itp-ref-showcase">
+          <div class="itp-ref-cards">
+            <article class="itp-ref-card">
+              <div class="itp-ref-card-logo">
+                <img
+                  src="https://it-parts.cz/user/documents/upload/carriers/Logo-PPL.png"
+                  alt="PPL"
+                />
+              </div>
+              <p>
+                Fast delivery, especially within Central Europe, with accurate
+                tracking and convenient pickup options.
+              </p>
+            </article>
+
+            <article class="itp-ref-card">
+              <div class="itp-ref-card-logo">
+                <img
+                  src="https://it-parts.cz/user/documents/upload/carriers/Logo-DPD.png"
+                  alt="DPD"
+                />
+              </div>
+              <p>
+                Strong European network and reliable delivery to your address or
+                pickup points based on your preferences.
+              </p>
+            </article>
+
+            <article class="itp-ref-card">
+              <div class="itp-ref-card-logo">
+                <img
+                  src="https://it-parts.cz/user/documents/upload/carriers/dhl-logo.png"
+                  alt="DHL"
+                  style="max-width: 120px; max-height: 40px"
+                />
+              </div>
+              <p>
+                International express shipping suitable for fast and secure
+                deliveries across Europe.
+              </p>
+            </article>
+
+            <article class="itp-ref-card">
+              <div class="itp-ref-card-logo">
+                <img
+                  src="https://it-parts.cz/user/documents/upload/carriers/logo-Zasilkovna.png"
+                  alt="Zasilkovna"
+                />
+              </div>
+              <p>
+                Cost-effective solution with delivery to pickup points, popular
+                for its flexibility and accessibility.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- COUNTRY TABLE -->
+        <div class="itp-table-wrap" style="margin-top: 32px">
+          <table class="itp-table">
+            <thead>
+              <tr>
+                <th colspan="2">Country</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/at.png"
+                    alt="Austria"
+                  />
+                </td>
+                <td class="itp-country-name">Austria</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/be.png"
+                    alt="Belgium"
+                  />
+                </td>
+                <td class="itp-country-name">Belgium</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/bg.png"
+                    alt="Bulgaria"
+                  />
+                </td>
+                <td class="itp-country-name">Bulgaria</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/hr.png"
+                    alt="Croatia"
+                  />
+                </td>
+                <td class="itp-country-name">Croatia</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/cz.png"
+                    alt="Czech Republic"
+                  />
+                </td>
+                <td class="itp-country-name">Czech Republic</td>
+                <td><span class="itp-price-chip">80 Kč</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/dk.png"
+                    alt="Denmark"
+                  />
+                </td>
+                <td class="itp-country-name">Denmark</td>
+                <td><span class="itp-price-chip">€40</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/ee.png"
+                    alt="Estonia"
+                  />
+                </td>
+                <td class="itp-country-name">Estonia</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/fi.png"
+                    alt="Finland"
+                  />
+                </td>
+                <td class="itp-country-name">Finland</td>
+                <td><span class="itp-price-chip">€13.50</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/fr.png"
+                    alt="France"
+                  />
+                </td>
+                <td class="itp-country-name">France</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/de.png"
+                    alt="Germany"
+                  />
+                </td>
+                <td class="itp-country-name">Germany</td>
+                <td><span class="itp-price-chip">€6</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/gr.png"
+                    alt="Greece"
+                  />
+                </td>
+                <td class="itp-country-name">Greece</td>
+                <td><span class="itp-price-chip">€14</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/hu.png"
+                    alt="Hungary"
+                  />
+                </td>
+                <td class="itp-country-name">Hungary</td>
+                <td><span class="itp-price-chip">€6</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/ie.png"
+                    alt="Ireland"
+                  />
+                </td>
+                <td class="itp-country-name">Ireland</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/it.png"
+                    alt="Italy"
+                  />
+                </td>
+                <td class="itp-country-name">Italy</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/lv.png"
+                    alt="Latvia"
+                  />
+                </td>
+                <td class="itp-country-name">Latvia</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/lt.png"
+                    alt="Lithuania"
+                  />
+                </td>
+                <td class="itp-country-name">Lithuania</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/lu.png"
+                    alt="Luxembourg"
+                  />
+                </td>
+                <td class="itp-country-name">Luxembourg</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/nl.png"
+                    alt="Netherlands"
+                  />
+                </td>
+                <td class="itp-country-name">Netherlands</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/pl.png"
+                    alt="Poland"
+                  />
+                </td>
+                <td class="itp-country-name">Poland</td>
+                <td><span class="itp-price-chip">€5</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/pt.png"
+                    alt="Portugal"
+                  />
+                </td>
+                <td class="itp-country-name">Portugal</td>
+                <td><span class="itp-price-chip">€7</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/ro.png"
+                    alt="Romania"
+                  />
+                </td>
+                <td class="itp-country-name">Romania</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/sk.png"
+                    alt="Slovakia"
+                  />
+                </td>
+                <td class="itp-country-name">Slovakia</td>
+                <td><span class="itp-price-chip">€5</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/si.png"
+                    alt="Slovenia"
+                  />
+                </td>
+                <td class="itp-country-name">Slovenia</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/es.png"
+                    alt="Spain"
+                  />
+                </td>
+                <td class="itp-country-name">Spain</td>
+                <td><span class="itp-price-chip">€8</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img
+                    class="itp-flag-img"
+                    src="https://it-parts.cz/user/documents/upload/flags/se.png"
+                    alt="Sweden"
+                  />
+                </td>
+                <td class="itp-country-name">Sweden</td>
+                <td><span class="itp-price-chip">€13.50</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="itp-notice">
+          📦 For delivery outside the European Union, please contact us in
+          advance by email so we can arrange the shipping conditions together.
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="itp-section">
+      <h2>Payment</h2>
+
+      <p class="itp-section-lead" style="margin-bottom: 32px">
+        Prefer bank transfer? Or conveniently pay via Comgate!
+      </p>
+
+      <div class="itp-payment-wrap">
+        <div class="itp-table-wrap">
+          <table class="itp-table">
+            <thead>
+              <tr>
+                <th colspan="2">Payment Method</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <span class="itp-dpp-logo-group">
+                    <img
+                      src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shop.svg"
+                      alt="Store"
+                      class="itp-dpp-logo"
+                    />
+                    <img
+                      src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/cash-coin.svg"
+                      alt="Cash"
+                      class="itp-dpp-logo"
+                    />
+                  </span>
+                </td>
+                <td>Cash payment at our store in Prague</td>
+                <td><span class="itp-price-chip">FREE</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span class="itp-dpp-logo-group">
+                    <img
+                      src="https://it-parts.cz/user/documents/upload/logo-payment/VISA-logo.png"
+                      alt="Visa"
+                      class="itp-dpp-logo"
+                    />
+                    <img
+                      src="https://it-parts.cz/user/documents/upload/logo-payment/mastercard-logo.png"
+                      alt="Mastercard"
+                      class="itp-dpp-logo"
+                    />
+                  </span>
+                </td>
+                <td>Card payment</td>
+                <td><span class="itp-price-chip">FREE</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span class="itp-logo-single">
+                    <img
+                      src="https://it-parts.cz/user/documents/upload/logo-payment/appple-pay.png"
+                      alt="Apple Pay"
+                      class="itp-dpp-logo itp-dpp-logo--apple"
+                    />
+                  </span>
+                </td>
+                <td>Apple Pay</td>
+                <td><span class="itp-price-chip">FREE</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span class="itp-logo-single">
+                    <img
+                      src="https://it-parts.cz/user/documents/upload/logo-payment/logo-google-pay.png"
+                      alt="Google Pay"
+                      class="itp-dpp-logo itp-dpp-logo--gpay"
+                    />
+                  </span>
+                </td>
+                <td>Google Pay</td>
+                <td><span class="itp-price-chip">FREE</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span class="itp-logo-single">
+                    <img
+                      src="https://it-parts.cz/user/documents/upload/logo-payment/logo-bank-transfer.png"
+                      alt="Bank Transfer"
+                      class="itp-dpp-logo itp-dpp-logo--bank"
+                    />
+                  </span>
+                </td>
+                <td>Bank transfer</td>
+                <td><span class="itp-price-chip">FREE</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

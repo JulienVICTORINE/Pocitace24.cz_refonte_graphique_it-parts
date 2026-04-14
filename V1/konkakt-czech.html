@@ -1,0 +1,569 @@
+﻿<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakty - IT-Parts</title>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        line-height: 1.5;
+        color: #1a1a1a;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
+
+      /* â”€â”€ HERO â”€â”€ */
+      .hero {
+        position: relative;
+        padding: 4rem 2rem 6rem;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #d1214c;
+      }
+
+      .hero-title {
+        font-size: clamp(2.6rem, 5vw, 4rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.2rem, 2vw, 1.45rem);
+        color: rgba(255, 255, 255, 0.85);
+        position: relative;
+      }
+
+      /* â”€â”€ CARDS GRID â”€â”€ */
+      .cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 0 2rem 3rem;
+        max-width: 1100px;
+        margin: -3rem auto 0;
+        position: relative;
+      }
+
+      /* â”€â”€ CARD â”€â”€ */
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid #e8eaed;
+        padding: 2rem 1.5rem 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+        cursor: default;
+      }
+
+      /* Barre colorÃ©e en haut au survol */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #1d9e75, #0c447c);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+        border-radius: 16px 16px 0 0;
+      }
+
+      .card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      /* â”€â”€ ICÃ”NE â”€â”€ */
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #e1f5ee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        transition: background 0.25s;
+      }
+
+      .card:hover .card-icon {
+        background: #1d9e75;
+      }
+      .card-icon::before {
+        display: block;
+        font-size: 1.45rem;
+        line-height: 1;
+        color: #0f6e56;
+        transition: color 0.25s;
+      }
+      .card-icon-phone::before {
+        content: "\260E";
+      }
+      .card-icon-mail::before {
+        content: "\2709";
+      }
+      .card-icon-pin::before {
+        content: "\2316";
+      }
+      .card:hover .card-icon::before {
+        color: #ffffff;
+      }
+
+      /* â”€â”€ TEXTES â”€â”€ */
+      .card-label {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-main {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #0f6e56;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+
+      .card-desc {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+
+      /* â”€â”€ BADGE â”€â”€ */
+      .card-badge {
+        display: inline-block;
+        padding: 8px 18px;
+        border: 1px solid #1d9e75;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        color: #0f6e56;
+        font-weight: 500;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+
+      .card:hover .card-badge {
+        background: #1d9e75;
+        color: #ffffff;
+      }
+
+      /* â”€â”€ RESPONSIVE â”€â”€ */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 3rem 1rem 5rem;
+        }
+
+        .cards-wrapper {
+          grid-template-columns: 1fr;
+          padding: 0 1rem 2rem;
+          gap: 1rem;
+          margin-top: -2.5rem;
+        }
+
+        .card {
+          padding: 1.5rem 1.25rem;
+        }
+      }
+
+      /* Maps + Horaires */
+      /* â”€â”€ SECTION â”€â”€ */
+      .section {
+        padding: 3rem 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1d9e75;
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      /* â”€â”€ LAYOUT 2 colonnes â”€â”€ */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      /* â”€â”€ CARTE â”€â”€ */
+      .map-wrap {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        height: 440px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      .map-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* â”€â”€ COLONNE DROITE â”€â”€ */
+      .right-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      /* â”€â”€ PANNEAU â”€â”€ */
+      .panel {
+        background: #ffffff;
+        border: 1px solid #e8eaed;
+        border-radius: 16px;
+        padding: 1.5rem 1.75rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      .panel-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.25rem;
+      }
+
+      .panel-icon {
+        width: 22px;
+        height: 22px;
+        stroke: #1d9e75;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+
+      .panel-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #111;
+      }
+
+      /* â”€â”€ HORAIRES â”€â”€ */
+      .hours-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 1rem;
+      }
+
+      .hours-row:last-child {
+        border-bottom: none;
+      }
+
+      .hours-row .day {
+        color: #222;
+        font-weight: 500;
+      }
+
+      .hours-row .day.closed {
+        color: #aaa;
+        font-weight: 400;
+      }
+
+      .hours-row .time {
+        color: #222;
+      }
+
+      .hours-row .time.closed {
+        color: #aaa;
+      }
+
+      /* â”€â”€ PANNEAU VOITURE â”€â”€ */
+      .panel-desc {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.65;
+        margin-bottom: 1.1rem;
+      }
+
+      .map-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1d9e75;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+
+      .map-link:hover {
+        opacity: 0.75;
+        text-decoration: underline;
+      }
+
+      /* â”€â”€ RESPONSIVE â”€â”€ */
+      @media (max-width: 768px) {
+        .section {
+          padding: 2rem 1rem 3rem;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .map-wrap {
+          height: 300px;
+        }
+      }
+
+      /* Taille pour Shoptet */
+      .hero-title {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      }
+
+      .card-label {
+        font-size: 15px;
+      }
+
+      .card-main {
+        font-size: 1.8rem;
+      }
+
+      .card-desc {
+        font-size: 1.05rem;
+      }
+
+      .card-badge {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: clamp(2.5rem, 5vw, 3.2rem);
+      }
+
+      .panel-title {
+        font-size: 1.4rem;
+      }
+
+      .hours-row {
+        font-size: 1.05rem;
+      }
+
+      .panel-desc {
+        font-size: 1.05rem;
+      }
+
+      /* ===== FIX SHOPTET FONT SIZE ===== */
+
+      /* CARDS */
+      .cards-wrapper .card-label {
+        font-size: 16px !important;
+      }
+
+      .cards-wrapper .card-main {
+        font-size: 22px !important;
+      }
+
+      .cards-wrapper .card-desc {
+        font-size: 16px !important;
+      }
+
+      .cards-wrapper .card-badge {
+        font-size: 15px !important;
+      }
+
+      /* SECTION MAP / HORAIRES */
+      .section .panel-title {
+        font-size: 22px !important;
+      }
+
+      .section .hours-row {
+        font-size: 16px !important;
+      }
+
+      .section .panel-desc {
+        font-size: 16px !important;
+      }
+
+      .section .map-link {
+        font-size: 16px !important;
+      }
+
+      /* TITRE */
+      .section-title {
+        font-size: 32px !important;
+      }
+
+      /* agrandir toute la zone proprement */
+      #content .section,
+      #content .cards-wrapper {
+        font-size: 18px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <section aria-label="Section contact IT-Parts">
+      <!-- HERO -->
+      <div class="hero">
+        <h1 class="hero-title">Kontaktujte nás</h1>
+        <p class="hero-subtitle">
+          Jsme tu pro vás — osobně, telefonicky nebo e-mailem
+        </p>
+      </div>
+      <!-- CARDS -->
+      <div class="cards-wrapper">
+        <!-- Phone -->
+        <div class="card">
+          <div class="card-icon card-icon-phone" aria-hidden="true"></div>
+          <p class="card-label">Zákaznická linka</p>
+          <p class="card-main">+420 775 177 085</p>
+          <p class="card-desc">Po–Pá 9:00–18:00</p>
+          <span class="card-badge">Volejte v pracovní dny</span>
+        </div>
+        <!-- E-mail -->
+        <div class="card">
+          <div class="card-icon card-icon-mail" aria-hidden="true"></div>
+          <p class="card-label">E-mail</p>
+          <p class="card-main">info@pocitace24.cz</p>
+          <p class="card-desc">Odpovídáme zpravidla do 24 hodin</p>
+          <span class="card-badge">Non-stop</span>
+        </div>
+        <!-- Adresse -->
+        <div class="card">
+          <div class="card-icon card-icon-pin" aria-hidden="true"></div>
+          <p class="card-label">Adresa prodejny</p>
+          <p class="card-main">K Žižkovu 809/7, 190 00 Praha 9-Vysočany</p>
+          <p class="card-desc">Praha 9-Vysočany · GPS: 50.099842, 14.495797</p>
+          <span class="card-badge">Parkování zdarma u vchodu</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h1 class="section-title">Kudy k nám?</h1>
+      <div class="layout">
+        <!-- Map of GOOGLE MAPS -->
+        <div class="map-wrap">
+          <iframe
+            width="600"
+            height="450"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.279199583435!2d14.490889397137831!3d50.09978083914081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b9339f0ad4fdd%3A0xce5e9c93b7539bc2!2sit-parts.eu!5e0!3m2!1sfr!2scz!4v1775643887575!5m2!1sfr!2scz"
+            allowfullscreen="allowfullscreen"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <!-- COLONNE DROITE -->
+        <div class="right-col" style="font-size: 1.6rem">
+          <!-- JÃ­zdennÃ­ Å™Ã¡dy -->
+          <div class="panel">
+            <div class="panel-header">
+              <svg class="panel-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span class="panel-title">Otevírací doba</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Pondělí</span>
+              <span class="time">09:00 – 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Úterý</span>
+              <span class="time">09:00 – 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Středa</span>
+              <span class="time">09:00 – 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Čtvrtek</span>
+              <span class="time">09:00 – 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Pátek</span>
+              <span class="time">09:00 – 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day closed">Sobota</span>
+              <span class="time closed">Zavřeno</span>
+            </div>
+            <div class="hours-row">
+              <span class="day closed">Neděle</span>
+              <span class="time closed">Zavřeno</span>
+            </div>
+          </div>
+          <!-- Autem -->
+          <div class="panel">
+            <div class="panel-header">
+              <svg class="panel-icon" viewBox="0 0 24 24">
+                <path
+                  d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"
+                ></path>
+                <circle cx="7" cy="17" r="2"></circle>
+                <circle cx="17" cy="17" r="2"></circle>
+              </svg>
+              <span class="panel-title">Autem</span>
+            </div>
+            <p class="panel-desc">
+              Bezplatné parkování přímo před vchodem. Bezbariérový přístup.
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/wTKSVtFxF4CR97xGA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Spustit navigaci v Google Maps →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <p>#FORM[code=contact]#</p>
+  </body>
+</html>

@@ -1,0 +1,320 @@
+﻿<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doprava a platba | IT-parts.cz</title>
+
+    <style>
+      :root {
+        --bg: #f4f6f5;
+        --surface: #ffffff;
+        --text: #1f2a27;
+        --muted: #5f6d68;
+        --brand: #5f7e75;
+        --brand-dark: #3f5f56;
+        --line: #d8e3de;
+        --ok: #1f9f5f;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Open Sans", Arial, sans-serif;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 20px 60px;
+      }
+
+      .hero {
+        background: linear-gradient(145deg, var(--brand), var(--brand-dark));
+        color: #fff;
+        border-radius: 20px;
+        padding: 54px 26px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(31, 42, 39, 0.18);
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.05;
+        margin-bottom: 12px;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: clamp(17px, 2vw, 23px);
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .section {
+        margin-top: 28px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 28px;
+      }
+
+      .section h2 {
+        font-size: clamp(26px, 3.5vw, 38px);
+        margin-bottom: 14px;
+        color: var(--brand-dark);
+      }
+
+      .section p + p {
+        margin-top: 10px;
+      }
+
+      .lead {
+        color: var(--muted);
+      }
+
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin: 10px 0 16px;
+      }
+
+      .price {
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1;
+        color: var(--ok);
+        font-weight: 800;
+      }
+
+      .price-note {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        gap: 16px;
+      }
+
+      .carrier-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+        background: #f9fbfa;
+      }
+
+      .carrier-badge {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #fff;
+        background: var(--brand);
+        border-radius: 999px;
+        padding: 6px 10px;
+        margin-bottom: 8px;
+      }
+
+      .pay-list,
+      .trust-list {
+        list-style: none;
+        margin-top: 12px;
+      }
+
+      .pay-list li,
+      .trust-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 8px;
+      }
+
+      .pay-list li::before,
+      .trust-list li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--ok);
+        font-weight: 700;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .notice {
+        background: #edf7f1;
+        border: 1px solid #cfe8d8;
+        border-radius: 12px;
+        padding: 14px;
+        color: #295640;
+        font-size: 15px;
+      }
+
+      .trust {
+        background: linear-gradient(145deg, #f3fbf6, #edf7f1);
+      }
+
+      @media (max-width: 860px) {
+        .page {
+          padding: 16px 14px 40px;
+        }
+
+        .hero {
+          border-radius: 16px;
+          padding: 36px 18px;
+        }
+
+        .section {
+          margin-top: 16px;
+          border-radius: 14px;
+          padding: 18px;
+        }
+
+        .grid-2,
+        .split {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <!-- <section class="hero">
+        <h1>Doprava a platba</h1>
+        <p>
+          Spolehlivé doručení po celé EU, transparentní cena a bezpečné platební
+          metody.
+        </p>
+      </section> -->
+
+      <section class="section">
+        <h2>Zóna doručení</h2>
+        <p>
+          Doručujeme do všech zemí Evropské unie, aby byly naše produkty
+          dostupné co nejširšímu okruhu zákazníků. Každou objednávku pečlivě
+          připravujeme a expedujeme v co nejkratším čase.
+        </p>
+        <p>
+          V Počítače24.cz spolupracujeme s partnery zaměřenými na
+          remanufacturing a odpovědnou logistiku. Díky tomu nabízíme řešení,
+          která jsou ekonomická i šetrná k životnímu prostředí 🌱.
+        </p>
+        <p>
+          Doručení mimo EU je možné po předchozí domluvě. V minulosti jsme již
+          doručovali například do USA.
+        </p>
+        <div class="notice">
+          📦 Pro doručení mimo Evropskou unii nás prosím kontaktujte předem na
+          e-mailu, abychom společně nastavili podmínky přepravy.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Cena dopravy</h2>
+        <div class="price-row">
+          <p class="price">99 CZK</p>
+          <p class="price-note">jednotná cena v rámci EU</p>
+        </div>
+        <p>
+          Nabízíme jednotnou a transparentní cenu dopravy pro objednávky
+          zasílané v rámci Evropské unie. Cena zahrnuje přípravu objednávky,
+          bezpečné balení i odeslání.
+        </p>
+        <p>
+          Každá zásilka je pečlivě chráněna a po odeslání obdržíte číslo pro
+          sledování zásilky v reálném čase.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Dopravci</h2>
+        <p class="lead">
+          Spolupracujeme s ověřenými dopravci po celé Evropě, abychom zajistili
+          rychlé, bezpečné a flexibilní doručení.
+        </p>
+
+        <div class="grid-2" style="margin-top: 14px">
+          <article class="carrier-card">
+            <span class="carrier-badge">PPL</span>
+            <p>
+              Rychlé doručení zejména ve střední Evropě s přesným trackingem a
+              praktickými možnostmi převzetí.
+            </p>
+          </article>
+          <article class="carrier-card">
+            <span class="carrier-badge">DPD</span>
+            <p>
+              Silná evropská síť a spolehlivé doručení na adresu i do výdejních
+              míst podle vašich preferencí.
+            </p>
+          </article>
+          <article class="carrier-card">
+            <span class="carrier-badge">DHL</span>
+            <p>
+              Mezinárodní expresní doprava vhodná pro rychlé a bezpečné zásilky
+              napříč Evropou.
+            </p>
+          </article>
+          <article class="carrier-card">
+            <span class="carrier-badge">Packeta</span>
+            <p>
+              Ekonomické řešení s doručením do výdejních míst, oblíbené pro
+              flexibilitu a dostupnost.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <h2>Platba</h2>
+          <p>
+            Nabízíme jednoduché, rychlé a plně zabezpečené platební metody pro
+            pohodlný nákup.
+          </p>
+          <ul class="pay-list">
+            <li>
+              Platba kartou přes zabezpečenou bránu Comgate (Visa, Mastercard)
+            </li>
+            <li>Platba bankovním převodem pro větší flexibilitu</li>
+            <li>
+              Pokročilé bezpečnostní protokoly chrání vaše osobní i platební
+              údaje
+            </li>
+            <li>Rychlé zpracování plateb pro okamžité odeslání objednávky</li>
+          </ul>
+        </div>
+        <aside class="notice" style="margin-top: 54px">
+          🔒 Všechny platby probíhají přes zabezpečené kanály. Jakmile je platba
+          potvrzena, objednávku ihned připravujeme k expedici.
+        </aside>
+      </section>
+
+      <section class="section trust">
+        <h2>Naše závazky</h2>
+        <ul class="trust-list">
+          <li>Testované a ověřené produkty</li>
+          <li>Doručení do celé Evropské unie</li>
+          <li>Bezpečné platební metody</li>
+          <li>Rychlá a vstřícná zákaznická podpora</li>
+          <li>Ekologický přístup a odpovědná logistika 🌱</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À propos de nous – IT-parts</title>
+    <style>
+      :root {
+        --green: #1a9e4a;
+        --green-dim: rgba(26, 158, 74, 0.08);
+        --bg: #ffffff;
+        --surface: #f5f7f5;
+        --surface2: #edf0ed;
+        --border: rgba(26, 158, 74, 0.18);
+        --text: #1a2118;
+        --muted: #000000;
+        --white: #ffffff;
+        --black: #000000;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      /* NOISE OVERLAY */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.5;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      } /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(45, 211, 111, 0.15) 0%,
+          transparent 70%
+        );
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        animation: pulse 6s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.15);
+          opacity: 1;
+        }
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .hero-logo {
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+        animation: fadeUp 0.9s 0.1s ease both;
+        margin-bottom: 8px;
+      }
+      .hero h1 {
+        font-family:
+          system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: clamp(64px, 12vw, 120px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        color: var(--white);
+        animation: fadeUp 0.9s 0.1s ease both;
+      }
+      .hero h1 span {
+        color: var(--black);
+        display: block;
+      }
+      .hero-sub {
+        max-width: 520px;
+        color: var(--muted);
+        font-size: 18px;
+        font-weight: 300;
+        margin-top: 28px;
+        animation: fadeUp 1s 0.2s ease both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      } /* ── SECTIONS ── */
+      section {
+        padding: 100px 0;
+        border-top: 1px solid var(--black);
+      }
+      .section-label {
+        font-family:
+          system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--black);
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      h2 {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        font-size: clamp(28px, 5vw, 44px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--black);
+        margin-bottom: 24px;
+      }
+      p {
+        color: var(--muted);
+        font-weight: 300;
+        margin-bottom: 16px;
+      }
+      p strong,
+      li strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      a {
+        color: var(--black);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      } /* ── VALUES CARDS ── */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 40px 0;
+      }
+      @media (max-width: 600px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--black);
+        border-radius: 16px;
+        padding: 28px 24px;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top left,
+          var(--green-dim),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .card:hover {
+        border-color: var(--green);
+        transform: translateY(-4px);
+      }
+      .card:hover::before {
+        opacity: 1;
+      }
+      .card-icon {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+      .card p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--text);
+      }
+
+      /* ── TIMELINE ── */
+      .timeline {
+        position: relative;
+        padding-left: 0;
+        margin-top: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 152px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--black) 10%,
+          var(--black) 90%,
+          transparent
+        );
+      }
+      @media (max-width: 600px) {
+        .timeline::before {
+          left: 0;
+        }
+        .timeline-item {
+          padding-left: 24px;
+        }
+        .timeline-date {
+          display: none;
+        }
+      }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 152px 1fr;
+        gap: 0 48px;
+        padding: 40px 0 40px;
+        margin-bottom: 12px;
+        position: relative;
+        animation: fadeUp 0.6s ease both;
+      }
+      .timeline-item:not(:last-child) {
+        border-bottom: 1px solid rgba(26, 158, 74, 0.07);
+      } /* dot on line */
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: 144px;
+        top: 42px;
+        width: 16px;
+        height: 16px;
+        background: var(--bg);
+        border: 2px solid var(--black);
+        border-radius: 50%;
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
+        z-index: 1;
+      }
+      .timeline-item:hover::after {
+        background: var(--black);
+        box-shadow: 0 0 10px rgba(26, 158, 74, 0.5);
+      }
+      .timeline-date {
+        text-align: right;
+        padding-right: 24px;
+        padding-top: 2px;
+      }
+      .date-year {
+        font-family: "Syne", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--black);
+        display: block;
+        line-height: 1;
+      }
+      .date-day {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 4px;
+        display: block;
+      }
+      .timeline-content {
+        padding-left: 0;
+      }
+      .timeline-content h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+      }
+      .timeline-content p {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      .timeline-content p:last-child {
+        margin-bottom: 0;
+      } /* "Dnes" special item */
+      .timeline-item--now {
+        background: var(--green-dim);
+        border-radius: 12px;
+        padding-top: 28px;
+        padding-bottom: 28px;
+      }
+      .timeline-item--now::after {
+        background: var(--black);
+        box-shadow: 0 0 0 4px rgba(26, 158, 74, 0.2);
+      }
+      .timeline-item--now .timeline-content h3 {
+        color: var(--black);
+      }
+
+      /* ── STATS STRIP ── */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--black);
+        border: 1px solid var(--black);
+        border-radius: 16px;
+        overflow: hidden;
+        margin: 56px 0 0;
+      }
+      .stat {
+        background: var(--surface);
+        padding: 32px 24px;
+        text-align: center;
+      }
+      .stat-num {
+        font-family:
+          system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--black);
+        display: block;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      @media (max-width: 600px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── LIST ── */
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      ul li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+      ul li::before {
+        content: "→";
+        color: var(--black);
+        font-size: 14px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      } /* ── B2B BLOCK ── */
+      .b2b-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 40px;
+      }
+      @media (max-width: 600px) {
+        .b2b-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .b2b-item {
+        background: var(--surface);
+        border: 1px solid var(--black);
+        border-radius: 12px;
+        padding: 20px 22px;
+        font-size: 14px;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: border-color 0.3s;
+      }
+      .b2b-item:hover {
+        border-color: var(--black);
+      }
+      .b2b-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--black);
+        border-radius: 50%;
+        flex-shrink: 0;
+      } /* ── QUOTE ── */
+      .quote-block {
+        border-left: 3px solid var(--black);
+        padding: 20px 28px;
+        background: var(--surface);
+        border-radius: 0 12px 12px 0;
+        margin: 40px 0;
+        font-style: italic;
+        color: var(--text);
+        font-size: 17px;
+        font-weight: 300;
+      } /* ── END CTA ── */
+      .cta {
+        background: var(--surface);
+        border: 1px solid var(--black);
+        border-radius: 24px;
+        padding: 64px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 80px;
+      }
+      .cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at center bottom,
+          rgba(45, 211, 111, 0.1),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .cta h2 {
+        margin-bottom: 16px;
+      }
+      .cta p {
+        max-width: 480px;
+        margin: 0 auto 32px;
+        font-size: 16px;
+      }
+      .cta-sig {
+        font-family:
+          system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 14px;
+        color: var(--black);
+        letter-spacing: 0.04em;
+      }
+
+      /* ================= MOBILE FIX ================= */
+      @media (max-width: 600px) {
+        /* HERO */
+        .hero {
+          padding: 60px 16px;
+        }
+
+        .hero-logo {
+          max-width: 200px;
+        }
+
+        .hero-sub {
+          font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+          padding: 0 16px;
+        }
+
+        /* TIMELINE FIX */
+        .timeline {
+          padding-left: 16px;
+        }
+
+        .timeline::before {
+          left: 8px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+          padding-left: 24px;
+        }
+
+        .timeline-item::after {
+          left: 0;
+          top: 42px;
+        }
+
+        .timeline-date {
+          display: none;
+        }
+
+        /* CARDS */
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        /* STATS */
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        /* B2B */
+        .b2b-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* CTA */
+        .cta {
+          padding: 40px 20px;
+        }
+
+        .cta h2 {
+          font-size: 24px;
+        }
+
+        .cta p {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HERO -->
+      <section class="hero" style="border: none; padding: 0">
+        <div class="hero-glow"></div>
+        <img
+          src="https://cdn.myshoptet.com/usr/www.it-parts.cz/user/logos/itparts_logo.png"
+          alt="IT-parts"
+          class="hero-logo"
+        />
+        <p class="hero-sub">
+          Jsme IT-parts a dáváme technice druhou šanci. Udržitelně, chytře a po
+          celé Evropě.
+        </p>
+      </section>
+      <!-- WHO WE ARE -->
+      <section>
+        <div class="section-label">Náš příběh</div>
+        <h2>Kdo jsme a proč jsme vznikli</h2>
+        <p>
+          Jsme mladá a rychle rostoucí firma, která vznikla z každodenní praxe a
+          zkušeností společnosti
+          <a href="http://www.pocitace24.cz" target="_blank"
+            ><strong>počítače24.cz</strong></a
+          >, specialisty na repasovanou výpočetní techniku.
+        </p>
+        <p>
+          Denně pracujeme s notebooky a počítači a vidíme, kolik plně funkčních
+          komponent by jinak zbytečně skončilo jako elektroodpad.
+        </p>
+        <p>
+          Právě proto jsme se rozhodli jít jinou cestou –
+          <strong>cestou oprav, opětovného využití a udržitelnosti</strong>.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">2012</span>
+            <span class="stat-label">Rok vzniku počítače24.cz</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5★</span>
+            <span class="stat-label">Hodnocení na marketplaces</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">EU</span>
+            <span class="stat-label">Expedice po celé Evropě</span>
+          </div>
+        </div>
+      </section>
+      <!-- VALUES -->
+      <section>
+        <div class="section-label">Naše hodnoty</div>
+        <h2>Věříme, že oprava má smysl</h2>
+        <p>
+          Starší notebooky a počítače si často zaslouží jen správný náhradní
+          díl, ne vyhození. Na IT-parts nabízíme
+          <strong>kvalitní, ověřené a plně funkční náhradní díly</strong>, které
+          pomáhají prodloužit život techniky a zároveň šetřit finance i životní
+          prostředí 🌱
+        </p>
+        <p>
+          Naše řešení je ideální jak pro <strong>koncové uživatele</strong>, tak
+          pro <strong>servisy, techniky a firmy</strong>, které se zabývají
+          opravami, správou IT nebo repasí techniky.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">✅</div>
+            <p>Kvalitní, ověřené a plně funkční náhradní díly</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">👤</div>
+            <p>Ideální pro koncové uživatele i domácí opravy</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <p>Pro servisy, techniky a firemní IT správu</p>
+          </div>
+        </div>
+      </section>
+      <!-- SHOP -->
+      <section>
+        <div class="section-label">E-shop</div>
+        <h2>Jednoduše, přehledně a dostupně</h2>
+        <p>
+          Celý e-shop stavíme na jednoduchosti a přehlednosti –
+          <strong>v češtině i angličtině</strong>, aby mohl pomáhat zákazníkům
+          napříč Evropou.
+        </p>
+        <ul>
+          <li>
+            Doporučujeme vyhledávání dílů
+            <strong>podle Part Number (PN)</strong> pro maximální kompatibilitu,
+            ale pokud si nejste jistí, <strong>rádi vám poradíme</strong>
+          </li>
+          <li>
+            Objednávky odesíláme <strong>po celé EU</strong>, po individuální
+            domluvě i mimo ni
+          </li>
+          <li>
+            Jsme <strong>plátci DPH</strong> a zakládáme si na férovém,
+            transparentním a dlouhodobém přístupu
+          </li>
+        </ul>
+      </section>
+      <!-- TIMELINE -->
+      <section>
+        <div class="section-label">Historie</div>
+        <h2>Jak jsme se sem dostali</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">
+              <span class="date-year">2012</span>
+              <span class="date-day">10. července</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Vznik počítače24.cz</h3>
+              <p>
+                Začínáme s repasovanou výpočetní technikou. Získáváme know-how,
+                servisní zkušenosti a hluboké porozumění notebookům a počítačům
+                v reálném provozu.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">
+              <span class="date-year">2022</span>
+              <span class="date-day">26. prosince</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Spuštění IT-parts.eu</h3>
+              <p>
+                Vzniká samostatný projekt zaměřený na prodej náhradních dílů.
+                Současně aktivně prodáváme na online marketplaces (Aukro,
+                Allegro, eBay), kde si budujeme silnou reputaci a stovky
+                pozitivních hodnocení.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">
+              <span class="date-year">2025</span>
+              <span class="date-day">1. ledna</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Spuštění IT-parts.cz</h3>
+              <p>
+                Po zkušenostech s bezpečnostními incidenty a napadením původního
+                e-shopu jsme se rozhodli pro nový začátek.
+              </p>
+              <p>
+                IT-parts.cz je
+                <strong>moderní, plně zabezpečený e-shop</strong>, postavený s
+                důrazem na stabilitu, bezpečnost a dlouhodobou důvěru zákazníků.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item timeline-item--now">
+            <div class="timeline-date">
+              <span class="date-year" style="font-size: 18px">Dnes</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Jedničkou v Evropě 🎯</h3>
+              <p>
+                Naším cílem je stát se
+                <strong
+                  >jedničkou v oblasti náhradních dílů pro IT techniku v
+                  Evropě</strong
+                >
+                – s důrazem na udržitelnost, férovost a profesionální přístup.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Reference & důvěra zákazníků -->
+      <section>
+        <div class="section-label">Reference</div>
+        <h2>⭐ Reference & Důvěra zákazníků</h2>
+        <div class="quote-block">
+          „Nezačínali jsme na e-shopu. Začínali jsme u zákazníků."
+        </div>
+        <p>
+          Ještě před spuštěním vlastního e-shopu jsme dlouhodobě prodávali na
+          zavedených online marketplaces. Právě zde si nás zákazníci ověřili –
+          <strong>reálnými nákupy a reálnými recenzemi</strong>.
+        </p>
+        <p>Na stránce Reference transparentně zveřejňujeme :</p>
+        <ul>
+          <li>Odkazy na naše prodejní účty</li>
+          <li>Aktuální hodnocení</li>
+          <li><strong>Dlouhodobě 5★ zpětná vazbu zákazníků</strong></li>
+        </ul>
+        <p>👉 <strong>Zobrazit reference a hodnocení zákazníků</strong></p>
+      </section>
+      <!-- B2B spolupráce – rosteme s vámi -->
+      <section>
+        <div class="section-label">Firmy & servisy</div>
+        <h2>🤝 B2B spolupráce – rosteme s vámi</h2>
+        <p>
+          Chceme být
+          <strong>jedničkou v oblasti náhradních dílů v Evropě</strong> a silným
+          partnerem pro firmy, které se technice věnují profesionálně..
+        </p>
+        <p>
+          Proto nabízíme B2B spolupráci se speciální registrací, která přináší :
+        </p>
+        <div class="b2b-grid">
+          <div class="b2b-item">
+            <div class="b2b-dot"></div>
+            Výhodnější ceny při pravidelných odběrech
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-dot"></div>
+            Individuální cenové nabídky
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-dot"></div>
+            Přednostní zpracování objednávek
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-dot"></div>
+            Dlouhodobá spolupráce a stabilní dodávky
+          </div>
+        </div>
+        <p>👉 Více informací najdete na stránce B2B spolupráce.</p>
+      </section>
+      <!-- WHY US -->
+      <section>
+        <div class="section-label">Proč my</div>
+        <h2>Proč nakupovat právě u IT-parts?</h2>
+        <ul>
+          <li>Udržitelný přístup – dáváme technice druhý život</li>
+          <li>Velké skladové zásoby a rychlá expedice</li>
+          <li>Podpora od lidí, kteří technice skutečně rozumí</li>
+          <li>Ekologické i ekonomické řešení oprav</li>
+          <li>B2B program pro firmy a servisy</li>
+        </ul>
+      </section>
+      <!-- END CTA -->
+      <div class="cta">
+        <h2>Jsme tu pro vás</h2>
+        <p>
+          Ať už opravujete jeden notebook doma, nebo spravujete desítky zařízení
+          ve firmě – <strong>jsme tu pro vás</strong>.
+        </p>
+        <p>
+          Děkujeme, že s námi pomáháte měnit přístup k technice a dáváte jí
+          druhou šanci.
+        </p>
+        <div class="cta-sig">Tým IT-parts.cz &amp; Počítače24.cz</div>
+      </div>
+    </div>
+  </body>
+</html>
