@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servis počítačů | IT-Parts.cz</title>
+    <style>
+      :root {
+        --red: #d1214c;
+        --red-dark: #962d22;
+        --red-light: #fdf2f1;
+        --ink: #222;
+        --ink-mid: #222;
+        --ink-light: #888;
+        --line: #e2e2e2;
+        --bg: #ffffff;
+        --white: #ffffff;
+        --card-bg: #ffffff;
+        --radius: 4px;
+        --table-hover-border: #a7ceb7;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
+
+      body {
+        color: var(--ink);
+      }
+
+      /* ── HERO ─────────────────────────────────────────── */
+      .hero {
+        background: var(--white);
+        color: var(--black);
+        padding: 72px 24px 64px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-inner {
+        position: relative;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.9;
+        max-width: 560px;
+        margin: 0 auto 32px;
+      }
+
+      .hero-text {
+        text-align: center !important;
+        margin: 0 auto 32px !important;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        color: var(--red);
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 28px;
+        border-radius: 40px;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+      }
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+      }
+
+      /* ── MAIN WRAPPER ─────────────────────────────────── */
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 24px 0;
+      }
+
+      section {
+        margin-bottom: 64px;
+      }
+
+      /* ── SECTION TITLE ────────────────────────────────── */
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+      .section-title .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        background: var(--red-light);
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .section-title h2 {
+        font-size: 25px;
+        color: var(--ink);
+        letter-spacing: -0.3px;
+      }
+
+      /* ── PRICING TABLE ────────────────────────────────── */
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.07),
+          0 4px 16px rgba(0, 0, 0, 0.05);
+      }
+      .price-table thead tr {
+        background: #ececed;
+        color: #222;
+      }
+      .price-table thead th {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 13px 20px;
+        text-align: left;
+      }
+      .price-table thead th:last-child {
+        text-align: right;
+      }
+
+      .price-table tbody tr {
+        border-bottom: 1px solid var(--line);
+        transition: background 0.15s;
+      }
+      .price-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .price-table tbody tr:hover {
+        background: #f7f4f4;
+        box-shadow: inset 0 0 0 1px var(--table-hover-border);
+      }
+
+      .price-table td {
+        padding: 14px 20px;
+        font-size: 16px;
+        color: var(--ink-mid);
+        vertical-align: middle;
+      }
+      .price-table td:last-child {
+        text-align: right;
+        font-weight: 600;
+        color: var(--red);
+        white-space: nowrap;
+        font-size: 16px;
+      }
+
+      /* ── EXPRESS BANNER ───────────────────────────────── */
+      .express-banner {
+        background: #ececed;
+        color: var(--black);
+        border-radius: 12px;
+        padding: 28px 32px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+      }
+      .express-banner .express-icon {
+        font-size: 40px;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+      .express-banner h3 {
+        font-size: 21px;
+        margin-bottom: 4px;
+      }
+      .express-banner p {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+      .express-price {
+        margin-left: auto;
+        text-align: right;
+        flex-shrink: 0;
+      }
+      .express-price .tag {
+        display: inline-block;
+        background: white;
+        border: 1px solid #d1214c;
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+
+      /* ── HOURLY RATE ──────────────────────────────────── */
+      .rate-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      .rate-card p {
+        font-size: 16px;
+        color: var(--ink-mid);
+      }
+      .rate-card .price-big {
+        font-size: 20px;
+        color: var(--red);
+        white-space: nowrap;
+      }
+
+      /* ── NOTES ────────────────────────────────────────── */
+      .notes {
+        background: #ececed;
+        border-left: 4px solid #d1214c;
+        border-radius: 0 8px 8px 0;
+        padding: 18px 22px;
+        font-size: 16px;
+        color: #d1214c;
+        line-height: 1.7;
+      }
+      .notes strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #3d3008;
+        font-size: 16px;
+      }
+      .notes p + p {
+        margin-top: 10px;
+      }
+
+      /* ── CONTACT ──────────────────────────────────────── */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 680px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .contact-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        padding: 24px 28px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      .contact-card .label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-light);
+        margin-bottom: 8px;
+      }
+      .contact-card a {
+        color: var(--red);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+      }
+      .contact-card a:hover {
+        text-decoration: underline;
+      }
+      .contact-card p {
+        font-size: 16px;
+        color: var(--ink-mid);
+      }
+      .contact-card .hours {
+        font-weight: 600;
+        color: var(--ink);
+        margin-top: 4px;
+      }
+
+      /* ── HALL PHOTO ───────────────────────────────────── */
+      .hall-section {
+        background: var(--ink);
+        color: var(--white);
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 64px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      }
+      .hall-photo-wrap {
+        position: relative;
+        height: 340px;
+        background: #2a2a2a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .hall-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        opacity: 0.5;
+      }
+      .hall-placeholder svg {
+        width: 56px;
+        height: 56px;
+        stroke: #fff;
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .hall-placeholder p {
+        font-size: 16px;
+        letter-spacing: 0.04em;
+      }
+      .hall-info {
+        padding: 28px 32px;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .hall-info .addr-block {
+        flex: 1;
+        min-width: 200px;
+      }
+      .hall-info .addr-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 6px;
+      }
+      .hall-info address {
+        font-style: normal;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.55;
+      }
+      .hall-info address strong {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+      .hall-map-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--red);
+        color: var(--white);
+        padding: 10px 22px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+        margin-top: 12px;
+        align-self: flex-start;
+      }
+      .hall-map-btn:hover {
+        background: var(--red-dark);
+        color: var(--white);
+        transform: translateY(-1px);
+      }
+
+      /* ── ANIMATIONS ───────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-inner > * {
+        animation: fadeUp 0.55s ease both;
+      }
+      .hero-inner > *:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .hero-inner > *:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .hero-inner > *:nth-child(3) {
+        animation-delay: 0.25s;
+      }
+      .hero-inner > *:nth-child(4) {
+        animation-delay: 0.35s;
+      }
+
+      /* ── RESPONSIVE ───────────────────────────────────── */
+      @media (max-width: 768px) {
+        .express-banner {
+          flex-wrap: wrap;
+        }
+        .express-price {
+          margin-left: 0;
+          text-align: left;
+        }
+        .rate-card {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        nav {
+          display: none;
+        }
+        .hall-info {
+          padding: 20px 20px;
+        }
+        .hall-photo-wrap {
+          height: 220px;
+        }
+      }
+      @media (max-width: 480px) {
+        main {
+          padding: 36px 16px 0;
+        }
+        .price-table td,
+        .price-table thead th {
+          padding: 12px 14px;
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Porouchalo se Vaše zařízení nebo rychle ztrácí výkon?</h1>
+        <p class="hero-text">
+          Provádíme opravy notebooků a stolních počítačů všech typů a značek.
+          Díky širokému sortimentu náhradních dílů a kvalifikovaným odborným
+          technikům jsme schopni vyřešit Váš problém v co možná nejkratším čase.
+          V případě potřeby zajistíme servis u Vás doma nebo v kanceláři.
+        </p>
+        <a href="#kontakt" class="hero-cta">
+          <span style="font-size: 18px">📞</span>
+          Nezoufejte a obraťte se na nás!
+        </a>
+      </div>
+    </section>
+
+    <!-- Image It-Parts.cz - Servis -->
+    <img
+      src="https://www.it-parts.cz/user/documents/upload/servis/it-parts-servis.jpg"
+      alt="It-Parts.cz - Servis počítačů"
+      style="width: 100%; height: auto; display: block; margin: 0 auto 48px"
+    />
+
+    <!-- MAIN -->
+    <main>
+      <p style="color: var(--black); font-size: 16px; margin-bottom: 48px">
+        Ceny servisních prací naleznete v ceníku níže.
+      </p>
+
+      <!-- HARDWARE -->
+      <section id="hardware">
+        <div class="section-title">
+          <div class="icon">💻</div>
+          <h2>Hardwarové práce</h2>
+        </div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Popis práce</th>
+              <th>Cena</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Diagnostika závady
+                <em style="color: var(--black); font-size: 16px"
+                  >(v případě provedení opravy u nás ZDARMA)</em
+                >
+              </td>
+              <td>500 Kč</td>
+            </tr>
+            <tr>
+              <td>Vyčištění chlazení počítače nebo notebooku od prachu</td>
+              <td>300 Kč</td>
+            </tr>
+            <tr>
+              <td>
+                Vyčištění chlazení vč. vnějších částí počítače nebo notebooku
+              </td>
+              <td>600 Kč</td>
+            </tr>
+            <tr>
+              <td>
+                Vyčištění chlazení počítače nebo notebooku vč. přepastování CPU
+                a GPU
+              </td>
+              <td>1 200 Kč</td>
+            </tr>
+            <tr>
+              <td>Přidání HW komponenty (HDD, RAM)</td>
+              <td>od 200 Kč</td>
+            </tr>
+            <tr>
+              <td>
+                Výměna displeje
+                <sup style="font-size: 16px; color: var(--black)">*</sup>
+              </td>
+              <td>800 Kč *</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SOFTWARE -->
+      <section id="software">
+        <div class="section-title">
+          <div class="icon">🧑‍💻</div>
+          <h2>Softwarové práce</h2>
+        </div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Popis práce</th>
+              <th>Cena *</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reinstalace systému bez zálohování dat</td>
+              <td>800 Kč</td>
+            </tr>
+            <tr>
+              <td>Reinstalace systému vč. zálohování dat</td>
+              <td>1 600 Kč</td>
+            </tr>
+            <tr>
+              <td>Přechod na novější verzi operačního systému Windows</td>
+              <td>800 Kč</td>
+            </tr>
+            <tr>
+              <td>Klonování pevného disku</td>
+              <td>800 Kč</td>
+            </tr>
+            <tr>
+              <td>Záchrana dat z poškozeného pevného disku nebo USB flash</td>
+              <td>od 2 000 Kč</td>
+            </tr>
+            <tr>
+              <td>Odvirování systému</td>
+              <td>od 1 000 Kč</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- HOURLY RATE -->
+      <section>
+        <div class="section-title">
+          <div class="icon">⏱</div>
+          <h2>Sazba za ostatní práce</h2>
+        </div>
+        <div class="rate-card">
+          <p>Ostatní neuvedené práce jsou účtovány hodinovou sazbou:</p>
+          <div class="price-big">800 Kč / hod.</div>
+        </div>
+      </section>
+
+      <!-- EXPRESS -->
+      <section>
+        <div class="express-banner">
+          <div class="express-icon">⚡</div>
+          <div>
+            <h3>Expresní servis</h3>
+            <p>
+              Vyřešení případu v expresním termínu (24 hodin nebo následující
+              pracovní den)
+            </p>
+          </div>
+          <div class="express-price">
+            <span class="tag">+ 50 % z ceny servisu</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTES -->
+      <section>
+        <div class="notes">
+          <strong>⚠ Důležité informace</strong>
+          <p>
+            * Minimální sazba – konečná cena bude stanovena po provedení
+            diagnostiky a odvíjí se od komplikovanosti konstrukčního řešení.
+          </p>
+          <p>
+            <strong
+              >Ceny servisních prací nezahrnují materiál a jsou uvedeny vč
+              DPH.</strong
+            >
+          </p>
+          <p>
+            <strong
+              >Ukončenou servisní zakázku je nutné vyzvednout do 7 pracovních
+              dní. Po uplynutí této lhůty bude k ceně servisní zakázky
+              připočteno skladné ve výši 5 Kč za každý započatý den.</strong
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="kontakt">
+        <div class="section-title">
+          <div class="icon">📞</div>
+          <h2>Kontakt</h2>
+        </div>
+        <p style="color: var(--ink-mid); margin-bottom: 20px; font-size: 16px">
+          Máte jiné problémy s počítačem nebo se potřebujete nejdříve poradit?
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="label">E-mail</div>
+            <a href="mailto:info@it-parts.cz">info@it-parts.cz</a>
+          </div>
+          <div class="contact-card">
+            <div class="label">Telefon</div>
+            <a href="tel:+420775445599">+420 775 445 599</a>
+          </div>
+          <div class="contact-card">
+            <div class="label">Otevírací doba</div>
+            <p class="hours">Pondělí – Pátek</p>
+            <p>09:00 – 18:00</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- HALL + ADDRESS -->
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 24px">
+      <div class="hall-section" id="adresa">
+        <div class="hall-photo-wrap">
+          <!-- Replace src with your actual hall photo -->
+          <img
+            src="https://cdn.myshoptet.com/usr/www.it-parts.cz/user/documents/upload/about-us/itparts_dron.jpg"
+            alt="Prodejna It-Parts.cz – K Žižkovu, Praha 9"
+            style="width: 100%; height: 100%; object-fit: cover; display: block"
+            onerror="
+              this.style.display = 'none';
+              document.querySelector('.hall-placeholder').style.opacity = '1';
+            "
+          />
+        </div>
+        <div class="hall-info">
+          <div class="addr-block">
+            <div class="addr-label">Naše prodejna</div>
+            <address>
+              <strong>K Žižkovu 809/7</strong>
+              190 00 Praha 9 – Vysočany<br />
+              Česká republika
+            </address>
+            <a
+              class="hall-map-btn"
+              href="https://maps.app.goo.gl/qM8nwVKcWbMTtupY7"
+              target="_blank"
+              rel="noopener"
+            >
+              <span style="font-size: 18px">📍</span>
+              Zobrazit na mapě
+            </a>
+          </div>
+          <div class="addr-block">
+            <div class="addr-label">Jak nás najdete</div>
+            <p style="font-size: 16px; opacity: 0.75; line-height: 1.7">
+              Jsme tu pro vás
+              <strong style="color: #fff">denně (PO–PÁ)</strong> od 09:00 do
+              18:00.<br />
+              Zastávka metra <strong style="color: #fff">Vysočanská</strong>,
+              linka B – poté 5 min pěšky.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
