@@ -455,6 +455,140 @@
       #content .cards-wrapper {
         font-size: 18px !important;
       }
+
+      /* ══════════════════════════════════════ */
+      /* NOUVELLE SECTION : INFORMATIONS LÉGALES */
+      /* ══════════════════════════════════════ */
+      
+      .info-section {
+        padding: 3rem 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .info-card {
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid #e8eaed;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .info-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e1f5ee;
+      }
+
+      .info-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #ececed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .info-card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+      }
+
+      .info-item {
+        margin-bottom: 1rem;
+      }
+
+      .info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #222;
+        margin-bottom: 0.3rem;
+      }
+
+      .info-value {
+        font-size: 1rem;
+        color: #222;
+        line-height: 1.6;
+      }
+
+      .info-value strong {
+        color: #222;
+        font-weight: 600;
+      }
+
+      .info-value a {
+        color: #222;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+
+      .info-value a:hover {
+        opacity: 0.75;
+        text-decoration: underline;
+      }
+
+      /* Responsive pour info section */
+      @media (max-width: 768px) {
+        .info-section {
+          padding: 2rem 1rem 3rem;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .info-card {
+          padding: 1.5rem;
+        }
+
+        .info-card-title {
+          font-size: 1.15rem;
+        }
+      }
+
+      /* Fix Shoptet pour info section */
+      .info-section .info-card-title {
+        font-size: 20px !important;
+      }
+
+      .info-section .info-label {
+        font-size: 14px !important;
+      }
+
+      .info-section .info-value {
+        font-size: 16px !important;
+      }
     </style>
   </head>
   <body>
@@ -496,6 +630,7 @@
         </div>
       </div>
     </section>
+    
     <section class="section">
       <h1 class="section-title">Kudy k nám?</h1>
       <div class="layout">
@@ -565,7 +700,7 @@
             <p class="panel-desc">
               Bezplatné parkování přímo před vchodem. Bezbariérový přístup.
             </p>
-            <a
+            
               class="map-link"
               href="https://maps.app.goo.gl/wTKSVtFxF4CR97xGA"
               target="_blank"
@@ -577,6 +712,89 @@
         </div>
       </div>
     </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- NOUVELLE SECTION : INFORMATIONS LÉGALES -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="info-section">
+      <h2 class="section-title">Firemní údaje</h2>
+      <div class="info-grid">
+        
+        <!-- Carte 1: Provozovatel -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">🏢</div>
+            <h3 class="info-card-title">Provozovatel e-shopu</h3>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Název společnosti</div>
+            <div class="info-value"><strong>M&M Import Export s.r.o.</strong></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Sídlo</div>
+            <div class="info-value">K Žižkovu 809/7<br>190 00 Praha 9 – Vysočany</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">IČ</div>
+            <div class="info-value">08571503</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">DIČ</div>
+            <div class="info-value">CZ08571503</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Zapsaná v obchodním rejstříku vedeném u</div>
+            <div class="info-value">Městského soudu v Praze<br>Sp. zn. C 321179/MSPH</div>
+          </div>
+        </div>
+
+        <!-- Carte 2: Jednatel -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">👤</div>
+            <h3 class="info-card-title">Jednatel</h3>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Jméno</div>
+            <div class="info-value"><strong>Marcel Martínek</strong></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Telefon</div>
+            <div class="info-value"><a href="tel:+420739999444">+420 739 999 444</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">E-mail</div>
+            <div class="info-value"><a href="mailto:info@it-parts.cz">info@it-parts.cz</a></div>
+          </div>
+        </div>
+
+        <!-- Carte 3: Bankovní spojení -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">🏦</div>
+            <h3 class="info-card-title">Bankovní spojení</h3>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Banka</div>
+            <div class="info-value"><strong>Raiffeisenbank</strong></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Číslo CZK účtu</div>
+            <div class="info-value">7399994466/5500</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">IBAN (CZK i EUR)</div>
+            <div class="info-value">CZ2455000000007399994466</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">SWIFT/BIC</div>
+            <div class="info-value">RZBCCZPP</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Formulář -->
     <p>#FORM[code=contact]#</p>
   </body>
